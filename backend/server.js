@@ -9,13 +9,16 @@ const app = express();
 const server = http.createServer(app);
 
 const io = socketIo(server, {
-  cors: { origin: "http://localhost:5173" }
+  cors: { origin: "https://wardly.netlify.app" }
 });
 global.io = io;
 
 connectDB();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://wardly.netlify.app"
+}));
+
 app.use(express.json());
 
 app.use((req, res, next) => {
