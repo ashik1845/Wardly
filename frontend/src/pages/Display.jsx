@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import "../styles/Display.css"
 
-const socket = io("http://localhost:5000");
+const socket = io("https://wardly.onrender.com");
 
 export default function Display() {
 

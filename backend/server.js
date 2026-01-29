@@ -15,9 +15,21 @@ global.io = io;
 
 connectDB();
 
+const allowedOrigins = [
+  "https://wardly-project.netlify.app"
+];
+
 app.use(cors({
-  origin: "https://wardly-project.netlify.app"
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
 }));
+
 
 app.use(express.json());
 
